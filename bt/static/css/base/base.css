@@ -1,0 +1,41 @@
+.navbar {
+    min-height: 70px;
+    background-color: #ff001e !important;
+    z-index: 1000;
+}
+
+.logo-navbar {
+    width: 70%;
+    height: auto;
+    margin-left: -120%;
+}
+
+.navbar .btn-success {
+    background-color: green;
+    margin-left: 20px;
+}
+
+.navbar input[type="search"] {
+    border-color: white;
+}
+
+.offcanvas-header {
+    background-color: #ff001e;
+    color: white;
+}
+
+footer {
+    background-color: #ff001e;
+    color: black;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+body {
+    padding-top: 150px;
+    margin-bottom: 60px;
+    position: relative;
+}
