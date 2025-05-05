@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from usuarios.forms import RegistroUserForm
@@ -8,9 +8,9 @@ def index(request):
     return render(request,'index/index.html',{
     })
 
-def home(request):
-    return render(request,'home/home.html',{
-    })
+def logout_view(request):
+    logout(request)
+    return redirect('index')
 
 def auth(request):
     if request.method == 'POST':
@@ -41,3 +41,11 @@ def auth(request):
         login_form = AuthenticationForm()
         context = {'form': registro_form, 'login_form': login_form}
         return render(request, 'auth/auth.html', context)
+
+def home(request):
+    return render(request,'home/home.html',{
+    })
+
+def reserve(request):
+    return render(request,'reserve/reserve.html',{
+    })

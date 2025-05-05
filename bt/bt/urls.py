@@ -17,11 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
-from usuarios.forms import RegistroUserForm
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('auth/', views.auth, name='auth'),
     path('home/', views.home, name='home'),
+    path('reserve/', views.reserve, name='reserve'),
+    path('logout/', views.logout_view, name='logout'),
 ]

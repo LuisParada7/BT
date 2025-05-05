@@ -21,7 +21,8 @@
                 data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-                <a href='/'>
+             {% block enlace_logo %}
+             {% endblock %}
                 <img src="{% static 'image/logoo.png' %}" class="logo-navbar">
                 </a>
             {% block extra_navbar %}
