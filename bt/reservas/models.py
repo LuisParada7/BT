@@ -14,7 +14,7 @@ class TrainingType(models.Model):
     def __str__(self):
         return self.name
 
-class TrainingAppointment(models.Model):
+class TrainingReservation(models.Model):
     date = models.DateField(verbose_name="Fecha", default=timezone.now)
     time = models.TimeField(verbose_name="Hora del entrenamiento")
     location = models.CharField(max_length=50, verbose_name="Dirección lugar de entrenamiento")
@@ -25,8 +25,8 @@ class TrainingAppointment(models.Model):
     completed = models.BooleanField(default=False, verbose_name="Completado")
 
     class Meta:
-        verbose_name = "Sesión de entrenamiento"
-        verbose_name_plural = "Sesiones de entrenamiento"
+        verbose_name = "Reserva de entrenamiento"
+        verbose_name_plural = "Reservas de entrenamiento"
         ordering = ['date']
 
     def __str__(self):

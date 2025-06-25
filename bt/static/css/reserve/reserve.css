@@ -1,0 +1,121 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container{
+    background-color: white;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    position: relative;
+    overflow: hidden;
+    width: 650px;
+    max-width: 100%;
+    min-height: 570px;
+    margin-top: -1%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.unsplash {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.pesa {
+    position: absolute;
+    top: 120px;
+    left: 15%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: auto;
+    z-index: 2;
+}
+
+.form-title {
+    text-align: center; /* Centra el título */
+    margin-bottom: 25px;
+    margin-top: 5%;
+    color: #333;
+    font-weight: 700;
+}
+
+.form-content {
+    /* Aquí definimos todo el espaciado para el formulario */
+    padding: 1% 40px 40px 40px; /* shorthand para:
+                                     - 80px arriba (para la pesa)
+                                     - 40px a la derecha
+                                     - 40px abajo
+                                     - 40px a la izquierda */
+}
+
+/* --- Estilos para el Contenedor del Formulario (<form>) --- */
+.booking-form {
+    display: flex; /* Activa Flexbox */
+    flex-wrap: wrap; /* Permite que los elementos pasen a la siguiente línea */
+    justify-content: space-between; /* Crea un espacio entre las columnas */
+}
+
+/* --- Estilos para cada grupo de Label/Input --- */
+.form-group {
+    display: flex;
+    flex-direction: column; /* Apila la etiqueta encima del input */
+    margin-bottom: 20px; /* Espacio vertical entre las filas */
+
+    /* Define el ancho para los elementos de dos columnas */
+    flex-basis: 48%; /* Cada uno ocupa casi la mitad del espacio */
+}
+
+/* --- Estilos para los grupos que ocupan todo el ancho --- */
+.form-group.full-width {
+    flex-basis: 100%; /* Ocupa todo el ancho disponible */
+}
+
+/* --- Estilos para las Etiquetas (Labels) --- */
+.form-group label {
+    margin-bottom: 8px; /* Espacio entre la etiqueta y el campo de entrada */
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+/* --- Estilos Generales para los Campos de Entrada (Inputs) --- */
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group select,
+.form-group textarea {
+    width: 100%; /* Ocupan todo el ancho de su contenedor (.form-group) */
+    padding: 12px;
+    background-color: #fac1c8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group button[type="submit"] {
+    background-color:#ff001e;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 17px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.form-group button[type="submit"]:hover {
+    background-color: #8b0010;;
+}

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TrainingType, TrainingAppointment
+from .models import TrainingType, TrainingReservation
 from import_export.admin import ImportExportModelAdmin
 
 
@@ -9,8 +9,8 @@ class TrainingTypeAdmin(ImportExportModelAdmin):
     search_fields = ('name', 'description')
     ordering = ['name']
 
-@admin.register(TrainingAppointment)
-class TrainingAppointmentAdmin(ImportExportModelAdmin):
+@admin.register(TrainingReservation)
+class TrainingReservationAdmin(ImportExportModelAdmin):
     list_display = ('user', 'date', 'time', 'location', 'display_training_types', 'phone', 'notes', 'completed',)
     list_filter = ('date', 'time', 'completed', 'user', 'training_type',)
     search_fields = ('user__username', 'user__email', 'date', 'location', 'phone', 'training_type__name')

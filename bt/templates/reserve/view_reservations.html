@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Tus reservas
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/reserve/view_reservations.css'%}">
+{% endblock %}
+
+{% block enlace_logo %}
+<a href='/home/'>
+{% endblock %}
+
+{% block extra_navbar %}
+<a href="/logout/" button type="button" class="btn btn-outline-light"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"/>
+    <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+  </svg>  Cerrar Sesión</button></a>
+{% endblock %}
+
+{% block content %}
+<div class="container" style="max-width: 900px; margin: 40px auto; padding: 20px;">
+    <h2>Mis Reservas de Entrenamiento</h2> {% if reservas %}
+        <div style="overflow-x:auto;"> <table class="appointments-table">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Lugar</th>
+                        <th>Tipo(s) de Entrenamiento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva.date|date:"d/m/Y" }}</td>
+                        <td>{{ reserva.time|time:"h:i A" }}</td>
+                        <td>{{ reserva.location }}</td>
+                        <td>
+                            {% for tipo in reserva.training_type.all %}
+                                {{ tipo.name }}{% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    {% endfor %} </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="no-appointments">
+            <p>No tienes ninguna reserva de entrenamiento en este momento.</p>
+            <a href="{% url 'reserve' %}" class="reserve-now-link">¡Reserva una ahora!</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -8,13 +8,13 @@
 }
 
 .navbar {
-    min-height: 70px;
+    min-height: 60px;
     background-color: #ff001e !important;
     z-index: 1000;
 }
 
 .logo-navbar {
-    width: 60%;
+    width: 45%;
     height: auto;
     margin-left: -120%;
 }

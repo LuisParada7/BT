@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 
 
-class CronogramaConfig(AppConfig):
+class ReservasConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'cronograma'
+    name = 'reservas'
+    label = 'cronograma'

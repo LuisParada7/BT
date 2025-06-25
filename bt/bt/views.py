@@ -2,7 +2,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 from usuarios.forms import RegistroUserForm
+from reservas.forms import TrainingReservationForm
+from reservas.models import TrainingReservation
+
+
 
 def index(request):
     return render(request,'index/index.html',{
@@ -46,6 +51,29 @@ def home(request):
     return render(request,'home/home.html',{
     })
 
-def reserve(request):
-    return render(request,'reserve/reserve.html',{
+def reserve_done(request):
+    return render(request, 'reserve/reserve_done.html',{
     })
+
+def reserve(request):
+    if request.method == 'POST':
+        form = TrainingReservationForm(request.POST)
+        if form.is_valid():
+            nueva_reserva = form.save(commit=False)
+            nueva_reserva.user = request.user
+            nueva_reserva.save()
+            form.save_m2m()
+
+            return redirect('reserve_done')
+    else:
+        form = TrainingReservationForm ()
+
+    return render(request,'reserve/reserve.html',{'form':form})
+
+@login_required
+def view_reservations(request):
+    reservas_del_usuario = TrainingReservation.objects.filter(user=request.user).order_by('date', 'time')
+    contexto = {
+        'reservas': reservas_del_usuario
+    }
+    return render(request, 'reserve/view_reservations.html', contexto)
