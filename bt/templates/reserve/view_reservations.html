@@ -20,36 +20,36 @@ Tus reservas
 {% endblock %}
 
 {% block content %}
-<div class="container" style="max-width: 900px; margin: 40px auto; padding: 20px;">
-    <h2>Mis Reservas de Entrenamiento</h2> {% if reservas %}
-        <div style="overflow-x:auto;"> <table class="appointments-table">
-                <thead>
-                    <tr>
-                        <th>Fecha</th>
-                        <th>Hora</th>
-                        <th>Lugar</th>
-                        <th>Tipo(s) de Entrenamiento</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for reserva in reservas %}
-                    <tr>
-                        <td>{{ reserva.date|date:"d/m/Y" }}</td>
-                        <td>{{ reserva.time|time:"h:i A" }}</td>
-                        <td>{{ reserva.location }}</td>
-                        <td>
-                            {% for tipo in reserva.training_type.all %}
-                                {{ tipo.name }}{% if not forloop.last %}, {% endif %}
-                            {% endfor %}
-                        </td>
-                    </tr>
-                    {% endfor %} </tbody>
-            </table>
+<div class="container" style="max-width: 900px; margin: 20px auto; padding: 20px;">
+    <h2>Mis Reservas de Entrenamiento </h2>
+
+    {% if reservas %}
+        <div class="reservas-grid">
+            {% for reserva in reservas %}
+                <div class="reserva-card">
+                    <div class="reserva-image-container">
+                        {% for tipo in reserva.training_type.all %}
+                            {% if tipo.image %}
+                                <img src="{{ tipo.image.url }}" alt="{{ tipo.name }}" class="training-type-image">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <p><strong>Fecha:</strong> {{ reserva.date|date:"d/m/Y" }}</p>
+                    <p><strong>Hora:</strong> {{ reserva.time|time:"h:i A" }}</p>
+                    <p><strong>Lugar:</strong> {{ reserva.location }}</p>
+                    <p>
+                        <strong>Tipo(s) de Entrenamiento:</strong>
+                        {% for tipo in reserva.training_type.all %}
+                            {{ tipo.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                </div>
+            {% endfor %}
         </div>
     {% else %}
         <div class="no-appointments">
             <p>No tienes ninguna reserva de entrenamiento en este momento.</p>
-            <a href="{% url 'reserve' %}" class="reserve-now-link">¡Reserva una ahora!</a>
+            <a href="{% url 'reserve' %}" class="reserve-now-link">¡Haz una reserva ahora!</a>
         </div>
     {% endif %}
 </div>

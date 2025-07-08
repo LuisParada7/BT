@@ -5,6 +5,7 @@ from django.utils import timezone
 class TrainingType(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nombre")
     description = models.CharField(max_length=50, verbose_name="Descripción")
+    image = models.ImageField(upload_to='training_type_images/', null=True, blank=True, verbose_name="Imagen")
 
     class Meta:
         verbose_name = "Tipo de entrenamiento"

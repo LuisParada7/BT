@@ -1,49 +1,89 @@
-.container {
-    font-family: Arial, sans-serif;
+.reservas-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 5%;
 }
 
-.appointments-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 25px;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    font-size: 16px;
+/* Estilos para cada tarjeta de reserva individual */
+.reserva-card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px 20px 20px 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    overflow: hidden;
 }
 
-.appointments-table th,
-.appointments-table td {
-    border: 1px solid #ddd;
-    padding: 12px 15px;
-    text-align: left;
+.reserva-image-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
 }
 
-.appointments-table th {
-    background-color: #f4f4f4;
+.training-type-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* Franja roja sobre la tarjeta */
+.reserva-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background-color: #ff001e;
+}
+
+
+/* Efecto al pasar el cursor sobre la tarjeta */
+.reserva-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los párrafos dentro de la tarjeta */
+.reserva-card p {
+    margin: 0 0 12px 0;
+    /* Espaciado entre los datos */
+    line-height: 1.5;
+    color: #555;
+}
+
+/* Elimina el margen inferior del último párrafo */
+.reserva-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilo para las etiquetas en negrita */
+.reserva-card strong {
     color: #333;
-    font-weight: bold;
 }
 
-.appointments-table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-.appointments-table tbody tr:hover {
-    background-color: #f1f1f1;
-}
-
+/* Mensaje de no hay reservas */
 .no-appointments {
     text-align: center;
-    margin-top: 40px;
-    font-size: 1.1em;
-    color: #777;
+    padding: 40px;
+    background-color: #f9f9f9;
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    margin-top: 30px;
 }
 
 .reserve-now-link {
     display: inline-block;
     margin-top: 15px;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #ff001e;
     color: white;
     text-decoration: none;
     border-radius: 5px;
+    font-weight: bold;
 }

@@ -5,7 +5,7 @@ from import_export.admin import ImportExportModelAdmin
 
 @admin.register(TrainingType)
 class TrainingTypeAdmin(ImportExportModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ('name', 'description', 'image')
     search_fields = ('name', 'description')
     ordering = ['name']
 

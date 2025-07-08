@@ -5,8 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from usuarios.forms import RegistroUserForm
 from reservas.forms import TrainingReservationForm
-from reservas.models import TrainingReservation
-
+from reservas.models import TrainingReservation, TrainingType
 
 
 def index(request):
@@ -72,7 +71,7 @@ def reserve(request):
 
 @login_required
 def view_reservations(request):
-    reservas_del_usuario = TrainingReservation.objects.filter(user=request.user).order_by('date', 'time')
+    reservas_del_usuario = TrainingReservation.objects.filter(user=request.user).prefetch_related('training_type').order_by('date', 'time')
     contexto = {
         'reservas': reservas_del_usuario
     }
