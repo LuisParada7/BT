@@ -27,15 +27,61 @@ Realizar reserva
     <img src="{% static 'image/unsplash2.jpg' %}" class="unsplash">
     <img src="{% static 'image/pesa.png' %}" class="pesa">
     <div class="form-content">
-    <h2 class="form-title">Personaliza tu entrenamiento</h2>
-    <form method="POST" class="booking-form">
-      {% csrf_token %} {{ form.as_p}}
+        <h2 class="form-title">Personaliza tu entrenamiento</h2>
 
-        <div class="form-group full-width">
-            <button type="submit">¡Reservar ya!</button>
+        <form method="GET" action="{% url 'reserve' %}" id="date-selection-form">
+        <div class="form-group">
+            <label for="id_date">Selecciona la fecha:</label>
+            <input type="date" name="date" required id="id_date" value="{{ selected_date }}">
+        </div>
+    </form>
+
+    <hr>
+
+    <form method="POST" class="booking-form">
+        {% csrf_token %}
+        <input type="hidden" name="date" value="{{ selected_date }}">
+
+        <div class="form-group">
+            <label for="id_time">Elige una hora disponible:</label>
+            {{ form.time }}
         </div>
 
+        <div class="form-group">
+            <label for="id_location">Dirección del entrenamiento:</label>
+            {{ form.location }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_phone">Celular del cliente:</label>
+            {{ form.phone }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_training_type">Tipo de entrenamiento:</label>
+            {{ form.training_type }}
+        </div>
+
+        <div class="form-group">
+            <label for="id_notes">Comentarios adicionales:</label>
+            {{ form.notes }}
+        </div>
+
+        <div class="form-group">
+            <button type="submit">¡Reservar ya!</button>
+        </div>
     </form>
 </div>
-  </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const dateInput = document.getElementById('id_date');
+        if (dateInput) {
+            dateInput.addEventListener('change', function() {
+                document.getElementById('date-selection-form').submit();
+            });
+        }
+    });
+</script>
   {% endblock %}
+

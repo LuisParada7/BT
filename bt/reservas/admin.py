@@ -11,17 +11,24 @@ class TrainingTypeAdmin(ImportExportModelAdmin):
 
 @admin.register(TrainingReservation)
 class TrainingReservationAdmin(ImportExportModelAdmin):
-    list_display = ('user', 'date', 'time', 'location', 'display_training_types', 'phone', 'notes', 'completed',)
-    list_filter = ('date', 'time', 'completed', 'user', 'training_type',)
-    search_fields = ('user__username', 'user__email', 'date', 'location', 'phone', 'training_type__name')
+    list_display = ('user', 'date', 'time', 'location', 'display_training_type', 'phone', 'notes', 'completed',)
+    list_filter = ('date', 'completed', 'user', 'training_type',)
+    search_fields = ('user__username', 'user__email', 'location', 'training_type__name')
     ordering = ['-date', '-time']
 
-    def display_training_types(self, obj):
+    def display_training_type(self, obj):
         """
-        Crea una cadena con los nombres de los TrainingType asociados.
+        Muestra el nombre del TrainingType asociado.
         """
-        return ", ".join([tt.name for tt in obj.training_type.all()])
-    display_training_types.short_description = "Tipos de Entrenamiento" # Nombre de la columna en el admin
+        # Primero, comprueba si la reserva tiene un tipo de entrenamiento asignado
+        if obj.training_type:
+            # Si lo tiene, devuelve su nombre. Ya no se necesita .all()
+            return obj.training_type.name
+        # Si no tiene ninguno, devuelve un texto por defecto
+        return "Sin asignar"
+
+    # Cambiamos la descripción para que coincida con el nuevo nombre
+    display_training_type.short_description = "Tipo de Entrenamiento"# Nombre de la columna en el admin
 
     # Organizar los campos en el formulario de creación/edición
     fieldsets = (

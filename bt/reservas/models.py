@@ -19,10 +19,11 @@ class TrainingReservation(models.Model):
     date = models.DateField(verbose_name="Fecha", default=timezone.now)
     time = models.TimeField(verbose_name="Hora del entrenamiento")
     location = models.CharField(max_length=50, verbose_name="Dirección lugar de entrenamiento")
-    training_type = models.ManyToManyField('TrainingType')
+    training_type = models.ForeignKey(TrainingType, on_delete=models.SET_NULL, null=True)
     phone = models.CharField(max_length=20, verbose_name="Celular del cliente")
     notes = models.CharField(max_length=150, verbose_name="Comentarios adicionales")
     user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Usuario", default=None)
+    google_event_id = models.CharField(max_length=255, null=True, blank=True)
     completed = models.BooleanField(default=False, verbose_name="Completado")
 
     class Meta:

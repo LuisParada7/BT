@@ -28,21 +28,24 @@ Tus reservas
             {% for reserva in reservas %}
                 <div class="reserva-card">
                     <div class="reserva-image-container">
-                        {% for tipo in reserva.training_type.all %}
-                            {% if tipo.image %}
-                                <img src="{{ tipo.image.url }}" alt="{{ tipo.name }}" class="training-type-image">
-                            {% endif %}
-                        {% endfor %}
+                        {% if reserva.training_type and reserva.training_type.image %}
+                                <img src="{{ reserva.training_type.image.url }}" alt="{{ reserva.training_type.name }}" class="training-type-image">
+                        {% endif %}
                     </div>
                     <p><strong>Fecha:</strong> {{ reserva.date|date:"d/m/Y" }}</p>
                     <p><strong>Hora:</strong> {{ reserva.time|time:"h:i A" }}</p>
                     <p><strong>Lugar:</strong> {{ reserva.location }}</p>
                     <p>
                         <strong>Tipo(s) de Entrenamiento:</strong>
-                        {% for tipo in reserva.training_type.all %}
-                            {{ tipo.name }}{% if not forloop.last %}, {% endif %}
-                        {% endfor %}
+                        {% if reserva.training_type %}
+                            {{ reserva.training_type.name }}
+                        {% else %}
+                          Sin especificar
+                        {% endif %}
                     </p>
+                    <div class="button-container">
+                        <button type="button" class="btn btn-outline-danger custom-btn" data-reservation-id="{{ reserva.id }}">Opciones</button>
+                    </div>
                 </div>
             {% endfor %}
         </div>
@@ -53,4 +56,20 @@ Tus reservas
         </div>
     {% endif %}
 </div>
+
+<div class="modal-overlay" id="options-modal">
+    <div class="modal-content">
+        <span class="modal-close">&times;</span>
+        <h3>Opciones de Reserva</h3>
+        <a href="#" id="edit-link" class="modal-button edit">Modificar Reserva</a>
+        <form action="#" method="POST" id="delete-form">
+            {% csrf_token %}
+            <button type="submit" class="modal-button delete">Eliminar Reserva</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{% static 'js/view_reservations.js' %}"></script>
 {% endblock %}
