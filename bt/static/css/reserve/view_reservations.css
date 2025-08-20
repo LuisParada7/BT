@@ -157,3 +157,12 @@
     border-radius: 5px;
     font-weight: bold;
 }
+
+.logout-btn{
+    font-weight: bold;
+    color:#ffffff;
+}
+
+.logout-btn:hover{
+    color:#ff001e
+}

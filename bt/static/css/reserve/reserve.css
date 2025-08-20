@@ -113,3 +113,11 @@ body{
 .form-group button[type="submit"]:hover {
     background-color: #8b0010;;
 }
+
+.logout-btn{
+    font-weight: bold;
+}
+
+.logout-btn:hover{
+    color:#ff001e
+}

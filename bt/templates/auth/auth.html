@@ -12,6 +12,10 @@ Inicio de Sesión
 <a href='/'>
 {% endblock %}
 
+{% block extra_navbar %}
+<a href="/" class="btn btn-outline-light volver-btn">Volver atrás</a>
+{% endblock %}
+
 {% block content %}
 
 <div class="container" id="container">
@@ -47,7 +51,7 @@ Inicio de Sesión
     <form method="post">
       {% csrf_token %}
       <h1>Inicio de Sesión</h1>
-      <span>Por favor ingrese su correo electrónico:</span>
+      <span>Por favor ingrese su nombre de usuario y contraseña:</span>
       <div>
         <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
       </div>
@@ -65,14 +69,14 @@ Inicio de Sesión
   <div class="toggle-container">
     <div class="toggle">
       <div class="toggle-panel toggle-left">
-        <h1>INSERTE TITULO XD</h1>
-        <p>sajjshjdshjhdsjhdjshdjhdjdshjdshjhsdjhdsdshsdj</p>
-        <button class="hidden" id="login">Iniciar Sesión</button>
+        <h1>¿YA TIENES UNA CUENTA?</h1>
+        <p>Ingresa con tus datos para acceder a tu perfil y gestionar tus entrenamientos.</p>
+        <button class="btn btn-outline-danger hidden" id="login">Iniciar Sesión</button>
       </div>
       <div class="toggle-panel toggle-right">
-        <h1>OTRO TITULO</h1>
-        <p>sajjshjdshjhdsjhdjshdjhdjdshjdshjhsdjhdsdshsdj</p>
-        <button class="hidden" id="register">Registrarse</button>
+        <h1>CREA TU CUENTA</h1>
+        <p>Regístrate para agendar tu primer entrenamiento personalizado.</p>
+        <button class="btn btn-outline-danger hidden" id="register">Registrarse</button>
       </div>
     </div>
   </div>

@@ -1,0 +1,143 @@
+/* 1. Contenedor principal de las imágenes */
+.index-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    /* --- CAMBIOS PARA ENCOGER --- */
+    width: 90%;             /* Reducido de 100% a 90% */
+    max-width: 1200px;      /* Añadido un ancho máximo para pantallas grandes */
+    margin: auto;           /* Añadido para centrar el contenedor */
+    /* -------------------------- */
+}
+
+/* Columna Izquierda (Texto) */
+.text-container {
+    flex: 2;
+    padding-left: 7%;
+    color: rgb(141, 141, 141);
+    padding-top: 5%;
+}
+
+/* --- NUEVAS REGLAS PARA REDUCIR EL TEXTO --- */
+.text-container h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.text-container h4 {
+    font-size: 1.3rem; /* Un tamaño más legible para el párrafo */
+    line-height: 1.5;
+}
+/* ------------------------------------------ */
+
+/* Columna Derecha (Imágenes) */
+.image-container {
+    flex: 1;
+}
+
+.bt-imagenes {
+    position: relative;
+    width: 40%;
+    left: 5%;
+}
+
+/* 3. Estilo para el LOGO */
+.bt-imagenes .logo {
+    position: relative;
+    display: block; /* Necesario para que el margen automático funcione */
+    margin: 0 auto; /* Centra el logo horizontalmente */
+    width: 50%;
+    z-index: 1;
+    filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
+}
+
+.overlay-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 3. Estilos para TODAS las imágenes pequeñas */
+.overlay-images img {
+    position: relative;
+    width: 25%;
+    height: auto;
+    filter: drop-shadow(9px 9px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* 4. Jabalina (Capa intermedia) */
+.overlay-images .jabalina {
+    width: 60%;
+    /* Un z-index más alto que el logo */
+    z-index: 2;
+    right: 30%;
+}
+
+/* 5. Resto de imágenes (Capa superior) */
+.overlay-images .balon-m,
+.overlay-images .pesa,
+.overlay-images .golty {
+    /* El z-index más alto para que estén al frente de todo */
+    z-index: 4;
+}
+
+.overlay-images .balon-m{
+    width: 35%;
+    top: 42%;
+    left: 8%;
+}
+.overlay-images .pesa {
+    width: 30%;
+    top: 48%;
+    right: 8%;
+}
+
+.overlay-images .golty{
+    width: 26%;
+    right: 75%;
+    top: 48%;
+}
+
+.overlay-images .basquet{
+    width: 28%;
+    right: 85%;
+    top: 42%;
+    z-index: 3;
+}
+
+.button-container{
+    text-align: center;
+}
+
+.custom-btn {
+    padding: 8px 18px;
+    font-size: 20px;
+    width: 30%;
+    color: #ff001e;
+    border-color: #ff001e;
+    font-weight: bold;
+}
+
+.custom-btn:hover {
+    color: #FFFFFF;
+    background-color: #ff001e;
+}
+
+.highlight-red {
+    color: #ff001e;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.empezar-btn{
+    font-weight: bold;
+}
+.empezar-btn:hover {
+    color: #ff001e;
+}

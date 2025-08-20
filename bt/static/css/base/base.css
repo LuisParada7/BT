@@ -8,15 +8,45 @@
 }
 
 .navbar {
+    display: flex;
+    justify-content: space-between;
     min-height: 60px;
     background-color: #ff001e !important;
     z-index: 1000;
+    padding: 0 20px;
 }
 
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex; /* Activa flexbox para alinear los iconos */
+    align-items: center; /* Los centra verticalmente */
+    gap: 15px; /* Crea un espacio de 15px ENTRE cada icono */
+}
+
+.navbar-right .social-icon{
+    /* Para hacerlos más grandes (puedes ajustar el valor) */
+    width: 28px;
+    height: 28px;
+    color: white;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.navbar-right .social-icon:hover {
+    /* Mueve el icono 5 píxeles hacia arriba */
+    transform: translateY(-5px);
+}
+
+
 .logo-navbar {
-    width: 45%;
+    width: 50%;
     height: auto;
-    margin-left: -120%;
+    margin-left: 25%;
+    margin-top: 1%;
 }
 
 .navbar .btn-success {
@@ -43,8 +73,8 @@ body {
 }
 
 footer {
-    background-color: #ff001e;
-    color: black;
+    background-color: #ff001e00;
+    color: rgb(124, 124, 124);
     text-align: center;
     padding: 10px;
     position: fixed;

@@ -13,8 +13,8 @@ body{
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
-    margin-top: 6%;
+    min-height: 520px;
+    margin-top: 4%;
 }
 
 .container p{
@@ -51,6 +51,11 @@ body{
 .container button.hidden{
     background: transparent;
     border-color: white;
+}
+
+.container button.hidden:hover {
+    background-color: white;
+    color: #ff001e;
 }
 
 .container form{
@@ -182,3 +187,23 @@ body{
     transform: translateX(200%);
 }
 
+input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px #ffffff inset;
+    -webkit-text-fill-color: #000000;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    box-shadow: 0 0 0 1000px #fac1c8 inset;
+    -webkit-text-fill-color: #000000;
+}
+
+.volver-btn{
+    font-weight: bold;
+}
+
+.volver-btn:hover{
+    color: #ff001e;
+}
