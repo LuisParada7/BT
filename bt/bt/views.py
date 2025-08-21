@@ -25,6 +25,7 @@ def auth(request):
             if form.is_valid():
                 user = form.save()
                 username = form.cleaned_data['username']
+                login(request, user)
                 return redirect('home')
             else:
                 context = {'form': form}
@@ -48,15 +49,17 @@ def auth(request):
         context = {'form': registro_form, 'login_form': login_form}
         return render(request, 'auth/auth.html', context)
 
+@login_required(login_url='auth')
 def home(request):
     return render(request,'home/home.html',{
     })
 
+@login_required(login_url='auth')
 def reserve_done(request):
     return render(request, 'reserve/reserve_done.html',{
     })
 
-@login_required
+@login_required(login_url='auth')
 def reserve(request):
     calendar = GoogleCalendarManager()
     try:
@@ -111,7 +114,7 @@ def reserve(request):
 
     return render(request, 'reserve/reserve.html', {'form': form, 'selected_date': selected_date.isoformat()})
 
-@login_required
+@login_required(login_url='auth')
 def view_reservations(request):
     reservas_del_usuario = TrainingReservation.objects.filter(user=request.user).prefetch_related('training_type').order_by('date', 'time')
     contexto = {
@@ -119,7 +122,7 @@ def view_reservations(request):
     }
     return render(request, 'reserve/view_reservations.html', contexto)
 
-@login_required
+@login_required(login_url='auth')
 def delete_reservation(request, reservation_id):
 
     reserva = get_object_or_404(TrainingReservation, id=reservation_id, user=request.user)
@@ -139,7 +142,7 @@ def delete_reservation(request, reservation_id):
 
     return redirect ('view_reservations')
 
-@login_required
+@login_required(login_url='auth')
 def edit_reservation(request, reservation_id):
     reserva = get_object_or_404(TrainingReservation, id=reservation_id, user=request.user)
     calendar = GoogleCalendarManager()
