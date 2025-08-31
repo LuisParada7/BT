@@ -22,13 +22,12 @@
 }
 
 .navbar-right {
-    display: flex; /* Activa flexbox para alinear los iconos */
-    align-items: center; /* Los centra verticalmente */
-    gap: 15px; /* Crea un espacio de 15px ENTRE cada icono */
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .navbar-right .social-icon{
-    /* Para hacerlos más grandes (puedes ajustar el valor) */
     width: 28px;
     height: 28px;
     color: white;
@@ -37,7 +36,6 @@
 }
 
 .navbar-right .social-icon:hover {
-    /* Mueve el icono 5 píxeles hacia arriba */
     transform: translateY(-5px);
 }
 

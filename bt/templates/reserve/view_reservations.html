@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Tus reservas
+Mis Reservas
 {% endblock %}
 
 {% block extra_css %}
@@ -20,10 +20,9 @@ Tus reservas
 {% endblock %}
 
 {% block content %}
-<div class="container" style="max-width: 900px; margin: 20px auto; padding: 20px;">
-    <h2>Mis Reservas de Entrenamiento </h2>
-
+<div class="container">
     {% if reservas %}
+    <span class="header">MIS RESERVAS DE ENTRENAMIENTO </span>
         <div class="reservas-grid">
             {% for reserva in reservas %}
                 <div class="reserva-card">
@@ -36,7 +35,7 @@ Tus reservas
                     <p><strong>Hora:</strong> {{ reserva.time|time:"h:i A" }}</p>
                     <p><strong>Lugar:</strong> {{ reserva.location }}</p>
                     <p>
-                        <strong>Tipo(s) de Entrenamiento:</strong>
+                        <strong>Tipo de Entrenamiento:</strong>
                         {% if reserva.training_type %}
                             {{ reserva.training_type.name }}
                         {% else %}
@@ -50,9 +49,14 @@ Tus reservas
             {% endfor %}
         </div>
     {% else %}
-        <div class="no-appointments">
-            <p>No tienes ninguna reserva de entrenamiento en este momento.</p>
-            <a href="{% url 'reserve' %}" class="reserve-now-link">¡Haz una reserva ahora!</a>
+    <span class="header2">MIS RESERVAS DE ENTRENAMIENTO </span>
+        <div class="no-reservations">
+            <img src="{% static 'image/balon-m.png' %}" class="balon-m">
+            <img src="{% static 'image/pesa.png' %}" class="pesa">
+            <img src="{% static 'image/golty.png' %}" class="golty">
+            <img src="{% static 'image/basquet.png' %}" class="basquet">
+            <p class="header-no-reservations">No tienes ninguna reserva de entrenamiento en este momento.</p>
+            <a href="/reserve/" class="btn btn-outline-light btn-reserve">¡Haz una reserva ahora!</a>
         </div>
     {% endif %}
 </div>

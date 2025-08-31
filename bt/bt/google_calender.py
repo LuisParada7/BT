@@ -54,7 +54,7 @@ class GoogleCalendarManager:
         """
         Usa la lista de eventos para encontrar y devolver los horarios disponibles.
         """
-        # Define el rango de trabajo para el día que se le pasa como parámetro.
+        # Define el rango de trabajo para el día.
         start_of_day = timezone.make_aware(dt.datetime.combine(date, dt.time(8, 0)))
         end_of_day = timezone.make_aware(dt.datetime.combine(date, dt.time(20, 0)))
 

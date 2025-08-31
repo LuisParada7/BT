@@ -1,17 +1,13 @@
-/* 1. Contenedor principal de las imágenes */
+
 .index-container {
     display: flex;
     align-items: center;
     padding: 20px;
-
-    /* --- CAMBIOS PARA ENCOGER --- */
-    width: 90%;             /* Reducido de 100% a 90% */
-    max-width: 1200px;      /* Añadido un ancho máximo para pantallas grandes */
-    margin: auto;           /* Añadido para centrar el contenedor */
-    /* -------------------------- */
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
 }
 
-/* Columna Izquierda (Texto) */
 .text-container {
     flex: 2;
     padding-left: 7%;
@@ -19,19 +15,16 @@
     padding-top: 5%;
 }
 
-/* --- NUEVAS REGLAS PARA REDUCIR EL TEXTO --- */
 .text-container h1 {
     font-size: 2.5rem;
     font-weight: bold;
 }
 
 .text-container h4 {
-    font-size: 1.3rem; /* Un tamaño más legible para el párrafo */
+    font-size: 1.3rem;
     line-height: 1.5;
 }
-/* ------------------------------------------ */
 
-/* Columna Derecha (Imágenes) */
 .image-container {
     flex: 1;
 }
@@ -42,11 +35,10 @@
     left: 5%;
 }
 
-/* 3. Estilo para el LOGO */
 .bt-imagenes .logo {
     position: relative;
-    display: block; /* Necesario para que el margen automático funcione */
-    margin: 0 auto; /* Centra el logo horizontalmente */
+    display: block;
+    margin: 0 auto;
     width: 50%;
     z-index: 1;
     filter: drop-shadow(5px 5px 8px rgba(0, 0, 0, 0.3));
@@ -63,7 +55,6 @@
     align-items: center;
 }
 
-/* 3. Estilos para TODAS las imágenes pequeñas */
 .overlay-images img {
     position: relative;
     width: 25%;
@@ -71,19 +62,15 @@
     filter: drop-shadow(9px 9px 15px rgba(0, 0, 0, 0.4));
 }
 
-/* 4. Jabalina (Capa intermedia) */
 .overlay-images .jabalina {
     width: 60%;
-    /* Un z-index más alto que el logo */
     z-index: 2;
     right: 30%;
 }
 
-/* 5. Resto de imágenes (Capa superior) */
 .overlay-images .balon-m,
 .overlay-images .pesa,
 .overlay-images .golty {
-    /* El z-index más alto para que estén al frente de todo */
     z-index: 4;
 }
 

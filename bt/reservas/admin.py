@@ -20,23 +20,18 @@ class TrainingReservationAdmin(ImportExportModelAdmin):
         """
         Muestra el nombre del TrainingType asociado.
         """
-        # Primero, comprueba si la reserva tiene un tipo de entrenamiento asignado
         if obj.training_type:
-            # Si lo tiene, devuelve su nombre. Ya no se necesita .all()
             return obj.training_type.name
-        # Si no tiene ninguno, devuelve un texto por defecto
         return "Sin asignar"
 
-    # Cambiamos la descripción para que coincida con el nuevo nombre
-    display_training_type.short_description = "Tipo de Entrenamiento"# Nombre de la columna en el admin
+    display_training_type.short_description = "Tipo de Entrenamiento"
 
-    # Organizar los campos en el formulario de creación/edición
     fieldsets = (
-        (None, { # Primera sección, sin título
+        (None, {
             'fields': ('user', 'date', 'time', 'location')
         }),
         ('Detalles del Entrenamiento', {
-            'fields': ('training_type', 'phone', 'notes') # training_type es M2M, se mostrará con el widget apropiado
+            'fields': ('training_type', 'phone', 'notes')
         }),
         ('Estado', {
             'fields': ('completed',)

@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}
-Inicio de Sesión
+Autenticación de Usuario
 {% endblock %}
 
 {% block extra_css %}
@@ -69,14 +69,14 @@ Inicio de Sesión
   <div class="toggle-container">
     <div class="toggle">
       <div class="toggle-panel toggle-left">
-        <h1>¿YA TIENES UNA CUENTA?</h1>
+        <h1 class="header">¿YA TIENES UNA CUENTA?</h1>
         <p>Ingresa con tus datos para acceder a tu perfil y gestionar tus entrenamientos.</p>
-        <button class="btn btn-outline-danger hidden" id="login">Iniciar Sesión</button>
+        <button class="btn btn-outline-light hidden" id="login">Iniciar Sesión</button>
       </div>
       <div class="toggle-panel toggle-right">
-        <h1>CREA TU CUENTA</h1>
+        <h1 class="header">CREA TU CUENTA</h1>
         <p>Regístrate para agendar tu primer entrenamiento personalizado.</p>
-        <button class="btn btn-outline-danger hidden" id="register">Registrarse</button>
+        <button class="btn btn-outline-light hidden" id="register">Registrarse</button>
       </div>
     </div>
   </div>
