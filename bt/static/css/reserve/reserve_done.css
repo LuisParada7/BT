@@ -48,6 +48,7 @@
     color: #ffffff;
     font-weight: bold;
     background-color: #ff001e;
+    border: 2px solid #ff001e;
     width: 25%;
     font-size: 1.2em;
     position: relative;
@@ -58,7 +59,7 @@
 .btn-view_reservation:hover {
     color: #ff001e;
     background-color: #ffffff;
-    border: 2px solid #ff001e;
+    border: 3px solid #ff001e;
 }
 
 .bottom-row {

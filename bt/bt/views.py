@@ -190,7 +190,7 @@ def edit_reservation(request, reservation_id):
                 except Exception as e:
                     print(f"Error al actualizar el evento en Google Calendar: {e}")
 
-            return redirect('home')
+            return redirect('edit_reservation_done')
         else:
             print("El formulario de edición no es válido. Errores:")
             print(form.errors)
@@ -202,10 +202,20 @@ def edit_reservation(request, reservation_id):
             selected_date = reserva.date
 
         available_slots = calendar.get_available_slots(selected_date)
-        form = TrainingReservationForm(instance=reserva, available_slots=available_slots)
+
+        form = TrainingReservationForm(
+            instance=reserva,
+            initial={'date': selected_date},
+            available_slots=available_slots
+        )
 
     return render(request, 'reserve/edit_reservation.html', {
         'form': form,
         'reserva': reserva,
         'selected_date': selected_date.isoformat()
+    })
+
+@login_required(login_url='auth')
+def edit_reservation_done (request):
+    return render(request, 'reserve/edit_reservation_done.html',{
     })

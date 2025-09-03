@@ -32,6 +32,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('delete/<int:reservation_id>/', views.delete_reservation, name='delete_reservation'),
     path('edit/<int:reservation_id>/', views.edit_reservation, name='edit_reservation'),
+    path('edit_reservation_done/', views.edit_reservation_done, name='edit_reservation_done'),
     path('reset_password/', auth_views.PasswordResetView.as_view(), name='reset_password'),
     path('reset_password_sent/', auth_views.PasswordResetDoneView.as_view(), name='password_reset_done'),
     path('reset/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
