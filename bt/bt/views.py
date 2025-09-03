@@ -107,7 +107,7 @@ def reserve(request):
                 nueva_reserva.google_event_id = created_event.get('id')
                 nueva_reserva.save()
 
-            #FUNCIÓN PARA MANDAR EL CORREO
+            #Función para mandar el correo
                 context = {
                     'user': nueva_reserva.user,
                     'reserva': nueva_reserva,
@@ -134,7 +134,7 @@ def reserve(request):
 
 @login_required(login_url='auth')
 def view_reservations(request):
-    reservas_del_usuario = TrainingReservation.objects.filter(user=request.user).prefetch_related('training_type').order_by('date', 'time')
+    reservas_del_usuario = TrainingReservation.objects.filter(user=request.user, completed=False).prefetch_related('training_type').order_by('date', 'time')
     contexto = {
         'reservas': reservas_del_usuario
     }

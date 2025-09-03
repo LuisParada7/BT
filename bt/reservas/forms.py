@@ -21,6 +21,8 @@ class TrainingReservationForm(forms.ModelForm):
             self.fields['time'].widget = forms.Select(choices=[('', 'No hay horas disponibles')])
             self.fields['time'].disabled = True
 
+        self.fields['notes'].required = False
+
         self.fields['location'].widget.attrs.update({'placeholder': 'Dirección o parque'})
         self.fields['phone'].widget.attrs.update({'placeholder': '3001234567'})
         self.fields['notes'].widget.attrs.update({'rows': 1, 'placeholder': '¿Alguna lesión o condición?'})
