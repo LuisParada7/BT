@@ -224,3 +224,7 @@ input:-webkit-autofill:active {
     background-color: #ff001e;
     color: white;
 }
+
+.form-errors {
+    color: #ff001e;
+}

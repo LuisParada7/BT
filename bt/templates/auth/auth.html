@@ -10,13 +10,37 @@ Autenticación de Usuario
 
 {% block enlace_logo %}
 <a href='/'>
-{% endblock %}
+  {% endblock %}
 
-{% block extra_navbar %}
-<a href="/" class="btn btn-outline-light volver-btn">Volver atrás</a>
-{% endblock %}
+  {% block extra_navbar %}
+  <a href="/" class="btn btn-outline-light volver-btn">Volver atrás</a>
+  {% endblock %}
 
-{% block content %}
+  {% block content %}
+
+  {% if form.password4.errors %}
+  <div class="form-errors">
+    {{ form.password4.errors }}
+  </div>
+  {% endif %}
+
+  {% if form.password3.errors %}
+  <div class="form-errors">
+    {{ form.password3.errors }}
+  </div>
+  {% endif %}
+
+  {% if form.password2.errors %}
+  <div class="form-errors">
+    {{ form.password2.errors }}
+  </div>
+  {% endif %}
+
+  {% if form.password1.errors %}
+  <div class="form-errors">
+    {{ form.password1.errors }}
+  </div>
+  {% endif %}
 
 <div class="container" id="container">
   <div class="form-container sign-up">
@@ -81,8 +105,8 @@ Autenticación de Usuario
     </div>
   </div>
 
-  {% endblock %}
+    {% endblock %}
 
-  {% block js %}
-  <script src="{% static 'js/auth.js' %}"></script>
-  {% endblock %}
+    {% block js %}
+    <script src="{% static 'js/auth.js' %}"></script>
+    {% endblock %}
