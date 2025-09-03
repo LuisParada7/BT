@@ -8,6 +8,8 @@ from reservas.models import TrainingReservation
 from .google_calender import GoogleCalendarManager
 import datetime as dt
 from django.utils import timezone
+from django.template.loader import render_to_string
+from django.core.mail import EmailMessage
 
 
 def index(request):
@@ -104,6 +106,22 @@ def reserve(request):
             if created_event:
                 nueva_reserva.google_event_id = created_event.get('id')
                 nueva_reserva.save()
+
+            #FUNCIÓN PARA MANDAR EL CORREO
+                context = {
+                    'user': nueva_reserva.user,
+                    'reserva': nueva_reserva,
+                }
+
+                html_message = render_to_string('emails/email.html', context)
+
+                subject = 'Confirmación de tu Reserva de Entrenamiento'
+                from_email = 'belalcazartrainer@gmail.com'
+                to_email = [nueva_reserva.user.email]
+
+                email = EmailMessage(subject, html_message, from_email, to_email)
+                email.content_subtype = "html"
+                email.send()
             return redirect('reserve_done')
     else:
         # Al cargar la página, muestra el formulario con los horarios disponibles
