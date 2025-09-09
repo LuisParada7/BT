@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
+{% providers_media_js %}
 {% load static %}
 {% block title %}
 Autenticación de Usuario
@@ -18,29 +20,21 @@ Autenticación de Usuario
 
   {% block content %}
 
-  {% if form.password4.errors %}
-  <div class="form-errors">
-    {{ form.password4.errors }}
-  </div>
-  {% endif %}
+<div class="error-container">
+    {% if form.non_field_errors %}
+        <div class="form-errors">
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
 
-  {% if form.password3.errors %}
-  <div class="form-errors">
-    {{ form.password3.errors }}
-  </div>
-  {% endif %}
-
-  {% if form.password2.errors %}
-  <div class="form-errors">
-    {{ form.password2.errors }}
-  </div>
-  {% endif %}
-
-  {% if form.password1.errors %}
-  <div class="form-errors">
-    {{ form.password1.errors }}
-  </div>
-  {% endif %}
+    {% for field in form %}
+        {% if field.errors %}
+            <div class="form-errors">
+                {{ field.errors }}
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
 
 <div class="container" id="container">
   <div class="form-container sign-up">
@@ -67,14 +61,14 @@ Autenticación de Usuario
         <input type="password" id="password2" name="password2" placeholder="Confirmar Contraseña" required>
       </div>
       <div>
-        <button type="submit" name="register_submit">Registrarse</button>
+        <button class="btn-register" type="submit" name="register_submit">Registrarse</button>
       </div>
     </form>
   </div>
   <div class="form-container sign-in">
     <form method="post">
       {% csrf_token %}
-      <h1>Inicio de Sesión</h1>
+      <h1 class="login-title">Inicio de Sesión</h1>
       <span>Por favor ingrese su nombre de usuario y contraseña:</span>
       <div>
         <input type="text" id="username" name="username" placeholder="Nombre de usuario" required>
@@ -83,10 +77,17 @@ Autenticación de Usuario
         <input type="password" id="password" name="password" placeholder="Contraseña" required>
       </div>
       <div>
-        <button type="submit" name="login_submit">Iniciar sesión</button>
+        <a href="/reset_password/">¿Olvidaste tu contraseña?</a>
       </div>
       <div>
-        <a href="/reset_password/">¿Olvidaste tu contraseña?</a>
+        <button class="btn-login" type="submit" name="login_submit">Iniciar sesión</button>
+      </div>
+      <div>
+      <a href="{% provider_login_url 'google' %}" button class="btn-google">
+        <img src="{% static 'image/logo-google.png' %}">
+        <span>Cuenta de Google</span>
+        </button>
+      </a>
       </div>
     </form>
   </div>

@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     'reservas',
     'usuarios',
     'import_export',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 JAZZMIN_SETTINGS = {
@@ -99,6 +104,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'bt.urls'
@@ -155,6 +161,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+SITE_ID = 1
+
 LANGUAGE_CODE = 'es'
 
 TIME_ZONE = 'America/Bogota'
@@ -190,3 +198,12 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'belalcazartrainer@gmail.com'
 EMAIL_HOST_PASSWORD = 'tzot fgpo ehvf yvhf'
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
+LOGIN_REDIRECT_URL = 'home'

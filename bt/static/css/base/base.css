@@ -59,6 +59,20 @@
 .offcanvas-header {
     background-color: #ff001e;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.offcanvas-title {
+    font-weight: bold;
+    margin-right: auto;
+    font-size: 1.4em;
+}
+
+.logo2 {
+    width: 15%;
 }
 
 body {
@@ -70,6 +84,25 @@ body {
     background-attachment: fixed;
 }
 
+.dropdown-menu.dropdown-menu-dark {
+    background-color: #ff001e;
+    border-color: #ff001e;
+}
+
+.dropdown-menu.dropdown-menu-dark .dropdown-item {
+    color: white;
+}
+
+.dropdown-menu.dropdown-menu-dark .dropdown-item:hover {
+    background-color: #d3011a;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.dropdown-menu.dropdown-menu-dark .dropdown-divider {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
 footer {
     background-color: #ff001e00;
     color: rgb(124, 124, 124);
@@ -78,4 +111,15 @@ footer {
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.footer-navbar{
+    color: rgb(124, 124, 124);
+    text-align: center;
+    font-size: 0.9em;
+}
+
+::selection{
+    background-color: #ff001e;
+    color: white;
 }

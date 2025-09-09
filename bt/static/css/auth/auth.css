@@ -3,6 +3,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    overflow: hidden;
 }
 
 .header{
@@ -38,7 +39,93 @@ body{
     font-size: 13px;
 }
 
-.container button{
+.login-title{
+    margin-bottom: 10%;
+}
+
+.btn-google {
+  margin-top: 8%;
+  padding: 12px 30px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 5px;
+  text-decoration: none;
+}
+
+.btn-google img{
+    width: 24px;
+    height: 24px;
+}
+
+.btn-google span{
+    color: #FFF;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.btn-google::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+.btn-google::before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #FF0000, #FFFB00, #03be19 , #0279c9,
+    #0279c9, #03be19, #FFFB00, #FF0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height:  calc(100% + 4px);
+  filter: blur(9px);
+  animation: glowing 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+  border-radius: 10px;
+  opacity: 0;
+}
+
+@keyframes glowing {
+  0% {background-position: 0 0;}
+  50% {background-position: 400% 0;}
+  100% {background-position: 0 0;}
+}
+
+/* hover */
+.btn-google:hover::before {
+  opacity: 1;
+}
+
+.btn-google:active:after {
+  background: transparent;
+}
+
+.btn-google:active {
+  color: #000;
+  font-weight: bold;
+}
+
+.btn-login,
+.btn-register {
     background-color: #ff001e;
     color: white;
     font-size: medium;
@@ -48,13 +135,28 @@ body{
     font-weight: bold;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    margin-top: 10px;
     cursor: pointer;
+}
+
+.btn-login{
+    margin-top: 8%;
+}
+
+.btn-register{
+    margin-top: 5%;
 }
 
 .container button.hidden{
     background: transparent;
     border-color: white;
+    font-size: medium;
+    padding: 10px 45px;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 10px;
+    cursor: pointer;
 }
 
 .container button.hidden:hover {
