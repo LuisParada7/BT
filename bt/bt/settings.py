@@ -59,6 +59,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "¡Bienvenido a la administración de Belalcazar Trainer!",
     "copyright": "| Belalcazar Trainer",
     "site_logo_classes": "img-circle",
+    "custom_css": "css/admin/custom_admin.css",
     "show_sidebar": True,
     "user_avatar": False,
 }
@@ -179,6 +180,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 # Media files (Archivos subidos por los usuarios)
 MEDIA_URL = '/media/'

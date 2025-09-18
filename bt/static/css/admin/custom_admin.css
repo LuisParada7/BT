@@ -1,0 +1,54 @@
+.btn-danger {
+    background-color: #ffffff;
+    color: #ff001e;
+    border: 1.5px solid #ff001e;
+}
+
+.btn-danger:hover {
+    background-color: #ff001e;
+    color: #ffffff;
+    border: 1.5px solid #ff001e;
+}
+
+
+.btn-danger:active{
+     box-shadow: none !important;
+     background-color: #ff001e !important;
+     color: #ffffff;
+     border: 1.5px solid #ff001e !important;
+}
+
+.btn-danger:focus {
+     box-shadow: none !important;
+     color: #ffffff;
+     background-color: #ff001e !important;
+     border: 1.5px solid #ff001e !important;
+}
+
+.main-header.navbar-danger {
+    background-color: #ff001e !important;
+    border-color: #ff001e !important;
+}
+
+#jazzy-logo.brand-link {
+    background-color: #ff001e !important;
+}
+
+.sidebar-light-danger .nav-sidebar > .nav-item > .nav-link.active {
+    border-left: 3px solid #ff001e !important;
+    color: #ff001e !important;
+}
+
+.sidebar-light-danger .nav-sidebar > .nav-item > .nav-link.active i {
+    color: #ff001e !important;
+}
+
+.content-wrapper a:not(.btn) {
+    color: #ff001e !important;
+}
+
+#jazzy-usermenu .dropdown-item:hover,
+#jazzy-usermenu .dropdown-item:focus {
+    background-color: #ff001e !important;
+    color: #ffffff !important;
+}

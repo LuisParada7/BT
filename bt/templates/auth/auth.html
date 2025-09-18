@@ -12,13 +12,17 @@ Autenticación de Usuario
 
 {% block enlace_logo %}
 <a href='/'>
-  {% endblock %}
+{% endblock %}
 
-  {% block extra_navbar %}
+{% block enlace_logo_mobile %}
+<a href='/'>
+{% endblock %}
+
+{% block extra_navbar %}
   <a href="/" class="btn btn-outline-light volver-btn">Volver atrás</a>
-  {% endblock %}
+{% endblock %}
 
-  {% block content %}
+{% block content %}
 
 <div class="error-container">
     {% if form.non_field_errors %}
@@ -83,10 +87,9 @@ Autenticación de Usuario
         <button class="btn-login" type="submit" name="login_submit">Iniciar sesión</button>
       </div>
       <div>
-      <a href="{% provider_login_url 'google' %}" button class="btn-google">
+      <a href="{% provider_login_url 'google' %}" class="btn-google">
         <img src="{% static 'image/logo-google.png' %}">
         <span>Cuenta de Google</span>
-        </button>
       </a>
       </div>
     </form>
@@ -106,8 +109,8 @@ Autenticación de Usuario
     </div>
   </div>
 
-    {% endblock %}
+{% endblock %}
 
-    {% block js %}
-    <script src="{% static 'js/auth.js' %}"></script>
-    {% endblock %}
+{% block js %}
+  <script src="{% static 'js/auth.js' %}"></script>
+{% endblock %}
