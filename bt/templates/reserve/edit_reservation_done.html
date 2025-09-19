@@ -14,7 +14,7 @@ Reserva Completada
 
 {% block enlace_logo_mobile %}
 <a href='/home/'>
-{% endblock %}
+{% endblock %}a
 
 {% block extra_navbar %}
 <a href="/logout/" class="btn btn-outline-light logout-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -24,24 +24,25 @@ Reserva Completada
 {% endblock %}
 
 {% block content %}
-<div class="background-container">
+<picture class="background-container">
+  <source srcset="{% static 'image/background_reserve_done4.png' %}" media="(width < 565px)" class="background_reserve_mobile">
   <img src="{% static 'image/background_reserve_done3.png' %}" class="background_reserve_done">
-</div>
+</picture>
 
 <div class="reserve_done-container">
   <div class="header-container">
     <span class="header">¡FELICITACIONES TU RESERVA SE HA MODIFICADO!</span>
-    <h6>Tu sesión de entrenamiento personalizado ha sido modificada con éxito. Pronto, un miembro de nuestro equipo se pondrá en contacto contigo. Mientras tanto, puedes revisar o seguir modificando todos los detalles de tus citas en cualquier momento haciendo click en el siguiente botón.</h6>
-    <a href="/view_reservations/" class="btn btn-outline-light btn-view_reservation">CONSULTAR ENTRENAMIENTOS</a>
+    <span class="confirmation-text">Tu sesión de entrenamiento personalizado ha sido modificada con éxito. Pronto, un miembro de nuestro equipo se pondrá en contacto contigo. Mientras tanto, puedes revisar o seguir modificando todos los detalles de tus citas en cualquier momento haciendo click en el siguiente botón.</span>
+   <a href="/view_reservations/" class="btn-view_reservation">CONSULTAR ENTRENAMIENTOS</a>
   </div>
   <div class="bottom-row">
     <div class="btn-home-container">
       <span class="header-home">Explora más opciones volviendo a nuestro menú.</span>
-      <a href="/home/" class="btn btn-outline-light btn-home">VOLVER AL MENÚ PRINCIPAL</a>
+      <a href="/home/" class="btn-home">VOLVER AL MENÚ PRINCIPAL</a>
     </div>
     <div class="btn-reserve-container">
       <span class="header-reserve">Mantén tu motivación y agenda el próximo entrenamiento.</span>
-      <a href="/reserve/" class="btn btn-outline-light btn-reserve">RESERVAR OTRO ENTRENAMIENTO</a>
+      <a href="/reserve/" class="btn-reserve">RESERVAR OTRO ENTRENAMIENTO</a>
     </div>
   </div>
 </div>
