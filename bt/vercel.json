@@ -2,12 +2,18 @@
     "builds": [{
         "src": "bt/wsgi.py",
         "use": "@vercel/python",
-        "config": { "maxLambdaSize": "15mb", "runtime": "python3.9" }
+        "config": {
+            "maxLambdaSize": "15mb",
+            "runtime": "python3.11"
+        }
     }],
     "routes": [
         {
             "src": "/(.*)",
             "dest": "bt/wsgi.py"
         }
-    ]
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "bt.settings.prod"
+    }
 }
